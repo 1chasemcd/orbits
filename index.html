@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbits</title>
+
+  <!-- Import Font -->
+  <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/kau5cqc.css"> -->
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- Import p5js -->
+  <script src="scripts/p5.js"></script>
+</head>
+
+<body>
+  <!-- Button to open info container -->
+  <button type="button" onclick="simulation.ui.toggleInfoContainer()" class="open-info-container">
+    <i class="fas fa-chevron-circle-right"></i>
+  </button>
+
+  <!-- Div to contain all planet information -->
+  <div id="info-container" class="info-container visible">
+
+    <!-- Header to contain buttons -->
+    <div class="info-container-header"><!--
+
+    --><button type="button" onclick="simulation.addPlanet();">
+        <i class="fas fa-plus-circle"></i>
+      </button><!--
+
+      --><button type="button" onclick="simulation.togglePlayPause();">
+        <i class="fas fa-play-circle"></i>
+      </button><!--
+
+      --><button type="button" onclick="simulation.restart();">
+        <i class="fas fa-undo-alt"></i>
+      </button><!--
+
+      --><button type="button" onclick="simulation.ui.toggleInfoContainer()" style="float: right;">
+        <i class="fas fa-chevron-circle-left"></i>
+      </button>
+    </div>
+
+    <!-- Div to space content below fixed header -->
+    <div style="width: inherit; height: 3.1rem;"></div>
+
+    <!-- Div to hold planet info -->
+    <div id="info-container-body">
+
+      <!-- Example planet div to be copied and reused -->
+      <div id="example-planet" style="display: none;" class="planet-container">
+
+        <!-- Planet Heading Input -->
+        <label for="planet-name"></label>
+        <input type="text" name="planet-name" class="planet-name" custom-max-width="18.5rem" value="Planet">
+        <button type="button" name="delete" class="delete-planet" onclick="simulation.deletePlanet(this.parentNode)">
+          <i class="fas fa-trash"></i>
+        </button>
+        <br>
+
+        <!-- Planet Initial Positon Input -->
+        <h2>Initial Position (km):</h2>
+        <br>
+        <h2>(</h2><!--
+        --><label for="x-position"></label><!--
+        --><input type="text" name="x-position" class="no-left-side-margin" custom-max-width="8rem" value="0"><!--
+        --><h3>, </h3><!--
+        --><label for="y-position"></label><!--
+        --><input type="text" name="y-positon" class="no-left-side-margin" custom-max-width="8rem" value="0"><!--
+        --><h3>)</h3>
+        <br>
+
+        <!-- Planet Initial Velocity Input -->
+        <h2>Initial Velocity (km/s):</h2>
+        <br>
+        <h2>(</h2><!--
+        --><label for="x-velocity"></label><!--
+        --><input type="text" name="x-velocity" custom-max-width="8rem" value="0"><!--
+        --><h3>, </h3><!--
+        --><label for="y-velocity"></label><!--
+        --><input type="text" name="y-velocity" custom-max-width="8rem" value="0"><!--
+        --><h3>)</h3>
+        <br>
+
+        <!-- Planet Mass Input -->
+        <h2>Mass (kg): </h2><!--
+        --><label for="mass"></label><!--
+        --><input type="text" name="mass" custom-max-width="13rem" value="1">
+        <br>
+
+        <!-- Planet radius input -->
+        <h2>Radius (km): </h2><!--
+        --><label for="radius"></label><!--
+        --><input type="text" name="radius" custom-max-width="12rem" value="1">
+        <br>
+
+        <!-- Planet color input -->
+        <h2>Color: #</h2><!--
+        --><label for="planet-color"></label>
+        <input type="text" name="planet-color" class="planet-color" custom-max-width="12rem" maxlength="6" value="ffffff">
+        <br>
+
+      </div>
+    </div>
+
+    <!-- Div to space content above fixed footer -->
+    <div style="width: inherit; height: 2.2rem;"></div>
+
+    <div class = info-container-footer>
+      <!-- Input to set the gravitational constant -->
+      <label for="gravitational-constant"></label>
+      <h2>Gravitational Constant:</h2>
+      <input type="text" name="gravitational-constant" custom-max-width="6rem" value="1">
+    </div>
+  </div>
+
+  <!-- Main script to run simulation -->
+  <script src="scripts/orbits.js"></script>
+</body>
+
+</html>
